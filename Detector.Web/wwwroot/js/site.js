@@ -1,7 +1,7 @@
 ﻿function init(maxId) {
     setInterval(function () {
         GetRecord(maxId);
-    }, 60 * 1000);
+    }, 30 * 1000);
 }
 
 function GetRecord(maxId) {
