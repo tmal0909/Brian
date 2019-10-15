@@ -9,7 +9,7 @@ function GetRecord(maxId) {
         url: '/Home/GetRecord',
         data: { maxId: maxId },
         success: function (records) {
-            if (records) {
+            if (records && records.length > 0) {
                 alert('接獲入侵通知');
                 window.location.reload();
             }

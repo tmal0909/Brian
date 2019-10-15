@@ -16,8 +16,7 @@ namespace Detector.Function
 {
     public static class SyncIntrudeRecord
     {
-        private static IConfiguration _config;
-
+        private static readonly string _connectionString = "Server=tcp:johnsonsqlsever.database.windows.net,1433;Initial Catalog=detector;Persist Security Info=False;User ID=johnson;Password=P@ssw0rd1234;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
         [FunctionName("SyncIntrudeRecord")]
         public static async Task<IActionResult> Run(
             [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req,
@@ -27,10 +26,9 @@ namespace Detector.Function
 
             try
             {
-                var connectionString = _config.GetConnectionString("Database");
                 var dbContextOptionsBuilder = new DbContextOptionsBuilder<DetectorContext>();
 
-                dbContextOptionsBuilder.UseSqlServer(connectionString);
+                dbContextOptionsBuilder.UseSqlServer(_connectionString);
 
                 using (var context = new DetectorContext(dbContextOptionsBuilder.Options))
                 {
