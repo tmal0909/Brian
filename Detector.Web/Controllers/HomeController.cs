@@ -30,6 +30,11 @@ namespace Detector.Web.Controllers
             return Json(data);
         }
 
+        public IActionResult InsertRecord()
+        {
+            return Redirect("https://detectorfunction20191015105102.azurewebsites.net/api/SyncIntrudeRecord?code=BGy3Ca1nfYcgrsH3Tb801zLT2MM/SVWQjhhg2QnVPAy/sGjaVDi22w==");
+        }
+
         public IActionResult Error(string errorMessage)
         {
             ViewBag.ErrorMessage = errorMessage;
